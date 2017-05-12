@@ -227,10 +227,11 @@ Library  openprocurement_client.utils
 
 Отримати інформацію із тендера
   [Arguments]  ${username}  ${tender_uaid}  ${field_name}
+#  debug
   openprocurement_client.Пошук тендера по ідентифікатору
   ...      ${username}
   ...      ${tender_uaid}
-
+#  debug
   ${status}  ${field_value}=  Run keyword and ignore error
   ...      Get from object
   ...      ${USERS.users['${username}'].tender_data.data}

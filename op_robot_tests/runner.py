@@ -1,9 +1,9 @@
-from chromedriver import CHROMEDRV_PATH
+# from chromedriver import CHROMEDRV_PATH
 from robot import run_cli
 import os
 import sys
 
-sys.path.append(CHROMEDRV_PATH)
+sys.path.append("/usr/bin/firefox")
 
 
 def runner():
