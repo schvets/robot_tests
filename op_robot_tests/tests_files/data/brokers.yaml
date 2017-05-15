@@ -301,7 +301,7 @@ PrivatMarket:
     keywords_file: privatmarket
     roles:
         tender_owner:   PrivatMarket_Owner
-        provider:       PrivatMarket_Provider
+        provider1:       PrivatMarket_Provider
         viewer:         PrivatMarket_Viewer
     timeout_on_wait: 30
 Promauctions:
