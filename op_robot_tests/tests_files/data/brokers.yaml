@@ -361,7 +361,7 @@ pzo:
         belowThreshold:
             enquiry: [0, 25]
             tender:  [0, 25]
-            accelerator: 180
+            accelerator: 1440
         openua:
             tender:  [0, 25]
             accelerator: 1440
@@ -386,12 +386,12 @@ aladdin:
         belowThreshold:
             enquiry: [0, 60]
             tender:  [0, 15]
-            accelerator: 400
+            accelerator: 1440
         openua:
             accelerator: 1440
-            tender:  [0, 30]
+            tender:  [0, 45]
         openeu:
-            tender:  [0, 30]
+            tender:  [0, 60]
             accelerator: 1440
     keywords_file: aladdin
     roles:

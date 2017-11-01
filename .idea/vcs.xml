@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/barbecue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/openprocurement_client" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.25h8" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.aladdin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.alltenders" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.aps" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.dzo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.etender" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.kapitalist" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.newtend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.privatmarket" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.prom" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.proztorg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.publicbid" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.publicportal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.pzo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.smarttender" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.uatenders" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.ubiz" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.uub" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.zakpro" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/robot_tests.broker.ztv" vcs="Git" />
+  </component>
+</project>
