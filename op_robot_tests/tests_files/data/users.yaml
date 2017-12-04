@@ -444,6 +444,15 @@ users:
         browser:  chrome
         position: [0, 0]
         size:     [1920, 1080]
+#    PrivatMarket_Owner:
+#        broker:   PrivatMarket
+#        homepage: "http://auction.privatbank.ua"
+#        email:    tadud@p33.org
+#        login:    +380123456789
+#        password: password_value
+#        browser:  chrome
+#        position: [0, 0]
+#        size:     [1920, 1080]
     PrivatMarket_Owner:
         broker:   PrivatMarket
         homepage: "http://auction.privatbank.ua"
