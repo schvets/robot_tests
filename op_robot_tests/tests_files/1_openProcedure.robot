@@ -214,7 +214,7 @@ ${ITEM_MEAT}        ${True}
   [Tags]   ${USERS.users['${viewer}'].broker}: Відображення активів лоту
   ...      viewer
   ...      ${USERS.users['${viewer}'].broker}
-  ...      tender_view  level1
+  ...      tender_view_additionalClassifications  level1
   Звірити відображення поля additionalClassifications[0].scheme усіх предметів для користувача ${viewer}
 
 
@@ -222,7 +222,7 @@ ${ITEM_MEAT}        ${True}
   [Tags]   ${USERS.users['${viewer}'].broker}: Відображення активів лоту
   ...      viewer
   ...      ${USERS.users['${viewer}'].broker}
-  ...      tender_view  level2
+  ...      tender_view_additionalClassifications  level2
   Звірити відображення поля additionalClassifications[0].id усіх предметів для користувача ${viewer}
 
 
@@ -231,7 +231,7 @@ ${ITEM_MEAT}        ${True}
   ...      viewer
   ...      ${USERS.users['${viewer}'].broker}
   ...      tender_view  level2
-  Звірити відображення поля additionalClassifications[0].description усіх предметів для користувача ${viewer}
+  Звірити поле additionalClassifications[0].description тендера усіх предметів для користувача ${viewer}
 
 
 Відображення назви одиниці активів лоту
@@ -274,6 +274,15 @@ ${ITEM_MEAT}        ${True}
   ...      ${USERS.users['${provider}'].broker}  ${USERS.users['${provider1}'].broker}
   ...      tender_view_contractPeriod  level2
   Звірити відображення поля contractPeriod.endDate усіх предметів для усіх користувачів
+
+
+Відображення гарантійного внеску
+  [Tags]   ${USERS.users['${viewer}'].broker}: Відображення основних даних лоту
+  ...      viewer  tender_owner  provider  provider1
+  ...      ${USERS.users['${viewer}'].broker}  ${USERS.users['${tender_owner}'].broker}
+  ...      ${USERS.users['${provider}'].broker}  ${USERS.users['${provider1}'].broker}
+  ...      tender_view  level2
+  Звірити відображення поля guarantee.amount тендера для усіх користувачів
 
 ##############################################################################################
 #             Редагування лоту
