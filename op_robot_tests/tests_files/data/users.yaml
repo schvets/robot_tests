@@ -444,24 +444,24 @@ users:
         browser:  chrome
         position: [0, 0]
         size:     [1920, 1080]
-#    PrivatMarket_Owner:
-#        broker:   PrivatMarket
-#        homepage: "http://auction.privatbank.ua"
-#        email:    tadud@p33.org
-#        login:    +380123456789
-#        password: password_value
-#        browser:  chrome
-#        position: [0, 0]
-#        size:     [1920, 1080]
     PrivatMarket_Owner:
         broker:   PrivatMarket
         homepage: "http://auction.privatbank.ua"
-        email:    pbecommercetest2@ukr.net
-        login:    +380102030405
-        password: value
+        email:    tadud@p33.org
+        login:    tadud@p33.org
+        password: password_value
         browser:  chrome
         position: [0, 0]
         size:     [1920, 1080]
+#    PrivatMarket_Owner:
+#        broker:   PrivatMarket
+#        homepage: "http://auction.privatbank.ua"
+#        email:    pbecommercetest2@ukr.net
+#        login:    +380102030405
+#        password: value
+#        browser:  chrome
+#        position: [0, 0]
+#        size:     [1920, 1080]
     Prom_Owner:
         broker:   Promauctions
         homepage: "http://zakupki.dz-test.net/auctions"
