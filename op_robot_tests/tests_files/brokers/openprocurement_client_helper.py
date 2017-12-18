@@ -11,12 +11,10 @@ import os
 import urllib
 
 def retry_if_request_failed(exception):
-    if isinstance(exception, RequestFailed):
-        status_code = getattr(exception, 'status_int', None)
-        if 500 <= status_code < 600 or status_code in (409, 429):
-            return True
-        else:
-            return False
+    status_code = getattr(exception, 'status_code', None)
+    print(status_code)
+    if 500 <= status_code < 600 or status_code in (409, 429, 412):
+        return True
     else:
         return isinstance(exception, BadStatusLine)
 
@@ -118,6 +116,31 @@ def get_document_by_id(data, doc_id):
             if doc_id in document.get('title', ''):
                 return document
     raise Exception('Document with id {} not found'.format(doc_id))
+
+
+def get_tenders_by_funder_id(client,
+                             funder_id=None,
+                             descending=True,
+                             tender_id_field='tenderID',
+                             opt_fields=('funders',)):
+    params = {'offset': '',
+              'opt_fields': ','.join((tender_id_field,) + opt_fields),
+              'descending': descending}
+    tender_list = True
+    client._update_params(params)
+    tenders_with_funder = {}
+    while tender_list and not tenders_with_funder:
+        tender_list = client.get_tenders()
+        for tender in tender_list:
+            if 'funders' in tender:
+                tenders_with_funder[tender[tender_id_field]] = [el['identifier']['id'] for el in tender['funders']]
+    # In case we are looking for a specific funder
+    if funder_id:
+        tenders_with_funder = {k: v for k, v in tenders_with_funder.items() if funder_id in v}
+    if not tenders_with_funder:
+        raise IdNotFound
+    else:
+        return tenders_with_funder
 
 
 def download_file_from_url(url, path_to_save_file):

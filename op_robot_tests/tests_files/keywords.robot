@@ -215,7 +215,18 @@ Get Broker Property By Username
   ${period_intervals}=  compute_intrs  ${BROKERS}  ${used_brokers}
   ${submissionMethodDetails}=  Get Variable Value  ${submissionMethodDetails}
   ${accelerator}=  Get Variable Value  ${accelerator}
-  ${tender_data}=  prepare_test_tender_data  ${period_intervals}  ${tender_parameters}  ${submissionMethodDetails}  ${accelerator}
+  ${funders}=  Get Variable Value  ${FUNDERS}
+  ${tender_data}=  prepare_test_tender_data  ${period_intervals}  ${tender_parameters}  ${submissionMethodDetails}  ${accelerator}  ${funders}
+  ${TENDER}=  Create Dictionary
+  Set Global Variable  ${TENDER}
+  Log  ${tender_data}
+  [return]  ${tender_data}
+
+
+Підготувати дані для створення плану
+  [Arguments]  ${tender_parameters}
+  ${data}=  test_tender_data_planning  ${tender_parameters}
+  ${tender_data}=  Create Dictionary  data=${data}
   ${TENDER}=  Create Dictionary
   Set Global Variable  ${TENDER}
   Log  ${tender_data}
@@ -439,7 +450,7 @@ Log differences between dicts
 
 Оновити сторінку
   [Arguments]  ${username}
-  Run Keyword If  '${MODE}' == 'planning'  Run As  ${username}  Оновити сторінку з планом  ${TENDER['TENDER_UAID']}
+  Run Keyword If  '${RESOURCE}' == 'plans'  Run As  ${username}  Оновити сторінку з планом  ${TENDER['TENDER_UAID']}
   ...      ELSE  Run As  ${username}  Оновити сторінку з тендером  ${TENDER['TENDER_UAID']}
 
 
@@ -492,6 +503,25 @@ Log differences between dicts
   Порівняти об'єкти  ${left}  ${right}
 
 
+Звірити поле донора
+  [Arguments]  ${username}  ${tender_uaid}  ${tender_data}  ${field}  ${funders_index}
+  ${left}=  get_from_object  ${tender_data.data.funders[${funders_index}]}  ${field}
+  Log  ${left}
+  Звірити поле донора із значенням  ${username}  ${tender_uaid}  ${left}  ${field}  ${funders_index}
+
+
+Звірити поле донора із значенням
+  [Arguments]  ${username}  ${tender_uaid}  ${left}  ${field}  ${funders_index}  ${object_id}=${Empty}
+  ${right}=  Отримати дані із тендера  ${username}  ${tender_uaid}  funders[${funders_index}].${field}  ${object_id}
+  Порівняти об'єкти  ${left}  ${right}
+
+
+Звірити відображення типу запланованого тендера для ${username}
+  ${type}=  Отримати дані із плану  ${username}  ${TENDER['TENDER_UAID']}  tender.procurementMethodType
+  Звірити відображення поля tender.procurementMethodType плану для користувача ${username}
+  Run Keyword If  '${type}' == ''  Run As  ${username}  Перевірити наявність повідомлення  "без застосування електронної системи"
+
+
 Порівняти об'єкти
   [Arguments]  ${left}  ${right}
   Log  ${left}
@@ -536,7 +566,9 @@ Log differences between dicts
   ${left_lat}=  get_from_object  ${tender_data.data}  items[${item_index}].deliveryLocation.latitude
   ${left_lon}=  get_from_object  ${tender_data.data}  items[${item_index}].deliveryLocation.longitude
   ${right_lat}=  Отримати дані із тендера  ${username}  ${tender_uaid}  deliveryLocation.latitude  ${item_id}
+  ${right_lat}=  Convert To Number  ${right_lat}
   ${right_lon}=  Отримати дані із тендера  ${username}  ${tender_uaid}  deliveryLocation.longitude  ${item_id}
+  ${right_lon}=  Convert To Number  ${right_lon}
   Порівняти координати  ${left_lat}  ${left_lon}  ${right_lat}  ${right_lon}
 
 
@@ -768,10 +800,17 @@ Require Failure
 
 
 Дочекатись дати закінчення періоду уточнень
-  [Arguments]  ${username}
+  [Arguments]  ${username}  ${tender_uaid}
   Дочекатись дати  ${USERS.users['${username}'].tender_data.data.enquiryPeriod.endDate}
   Оновити LAST_MODIFICATION_DATE
   Дочекатись синхронізації з майданчиком  ${username}
+  Wait until keyword succeeds
+  ...      10 min 15 sec
+  ...      15 sec
+  ...      Звірити статус тендера
+  ...      ${username}
+  ...      ${tender_uaid}
+  ...      active.tendering
 
 
 Дочекатись дати закінчення періоду відповідей на запитання
