@@ -228,7 +228,7 @@ users:
         size:     [800, 700]
     PrivatMarket_Viewer:
         broker:   PrivatMarket
-        homepage: "https://rc.privatmarket.ua/business/tenders?_locale=uk"
+        homepage: "https://zakupivli24.pb.ua/stage/ptr/registry.html?lang=uk"
         email:    pbecommercetest2@ukr.net
         login:    380270010001
         password: password0001
@@ -237,7 +237,7 @@ users:
         size:     [1920, 1080]
     PrivatMarket_Provider:
         broker:   PrivatMarket
-        homepage: "https://rc.privatmarket.ua/business/tenders?_locale=uk"
+        homepage: "https://zakupivli24.pb.ua/stage/ptr/registry.html?lang=uk"
         email:    pbecommercetest2@ukr.net
         login:    380270010002
         password: password0002
@@ -246,7 +246,7 @@ users:
         size:     [1920, 1080]
     PrivatMarket_Owner:
         broker: PrivatMarket
-        homepage: "https://rc.privatmarket.ua/business/tenders?_locale=uk"
+        homepage: "https://zakupivli24.pb.ua/stage/ptr/registry.html?lang=uk"
         email: pbecommercetest1@ukr.net
         login: 380270010003
         password: password0003
