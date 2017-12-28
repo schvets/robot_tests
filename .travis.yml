@@ -18,11 +18,11 @@ install:
   - sudo pip list
   - sudo pip install virtualenv
   - sudo mkdir ~/environments/
-  - sudo cd ~/environments/
-  - virtualenv --no-site-packages test
+  - cd ~/environments/
+  - sudo virtualenv --no-site-packages test
   - source test/bin/activate
   - sudo apt-get install python-minimal python2.7-dev git gcc libyaml-dev libjpeg-dev libz-dev
-    - sudo pip list
+  - sudo pip list
 
 script:
   # perform build and run commands here
