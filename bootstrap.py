@@ -148,44 +148,44 @@ if find_links:
     cmd.extend(['-f', find_links])
 
 requirement = 'zc.buildout'
-version = options.buildout_version
-if version is None and not options.accept_buildout_test_releases:
-    # Figure out the most recent final version of zc.buildout.
-    import setuptools.package_index
-    _final_parts = '*final-', '*final'
-
-    def _final_version(parsed_version):
-        try:
-            return not parsed_version.is_prerelease
-        except AttributeError:
-            # Older setuptools
-            for part in parsed_version:
-                if (part[:1] == '*') and (part not in _final_parts):
-                    return False
-            return True
-
-    index = setuptools.package_index.PackageIndex(
-        search_path=[setuptools_path])
-    if find_links:
-        index.add_find_links((find_links,))
-    req = pkg_resources.Requirement.parse(requirement)
-    if index.obtain(req) is not None:
-        best = []
-        bestv = None
-        for dist in index[req.project_name]:
-            distv = dist.parsed_version
-            if _final_version(distv):
-                if bestv is None or distv > bestv:
-                    best = [dist]
-                    bestv = distv
-                elif distv == bestv:
-                    best.append(dist)
-        if best:
-            best.sort()
-            version = best[-1].version
-if version:
-    requirement = '=='.join((requirement, version))
-cmd.append(requirement)
+version = 2.5.3
+# if version is None and not options.accept_buildout_test_releases:
+#     # Figure out the most recent final version of zc.buildout.
+#     import setuptools.package_index
+#     _final_parts = '*final-', '*final'
+#
+#     def _final_version(parsed_version):
+#         try:
+#             return not parsed_version.is_prerelease
+#         except AttributeError:
+#             # Older setuptools
+#             for part in parsed_version:
+#                 if (part[:1] == '*') and (part not in _final_parts):
+#                     return False
+#             return True
+#
+#     index = setuptools.package_index.PackageIndex(
+#         search_path=[setuptools_path])
+#     if find_links:
+#         index.add_find_links((find_links,))
+#     req = pkg_resources.Requirement.parse(requirement)
+#     if index.obtain(req) is not None:
+#         best = []
+#         bestv = None
+#         for dist in index[req.project_name]:
+#             distv = dist.parsed_version
+#             if _final_version(distv):
+#                 if bestv is None or distv > bestv:
+#                     best = [dist]
+#                     bestv = distv
+#                 elif distv == bestv:
+#                     best.append(dist)
+#         if best:
+#             best.sort()
+#             version = best[-1].version
+# if version:
+#     requirement = '=='.join((requirement, version))
+# cmd.append(requirement)
 
 import subprocess
 if subprocess.call(cmd) != 0:
