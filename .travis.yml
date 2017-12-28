@@ -15,6 +15,7 @@ addons:
       - google-chrome-stable
 
 install:
+  - pwd
   - sudo pip list
   - sudo pip install virtualenv
   - sudo mkdir ~/environments/
