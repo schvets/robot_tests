@@ -19,7 +19,9 @@ before_install:
 
 script:
   # perform build and run commands here
+  - sudo apt-get install python-minimal python2.7-dev git gcc libyaml-dev libjpeg-dev libz-dev
   - python bootstrap.py
   - yes
+  - bin/buildout -N "sources:robot_tests.broker.privatmarket=git https://github.com/portunatos/robot_tests.broker.privatmarket branch=2.3.x_new" 
   - bin/buildout -N "sources:robot_tests.broker.privatmarket=git https://github.com/portunatos/robot_tests.broker.privatmarket branch=2.3.x_new" 
   - bin/op_tests -s 1_openProcedure -A robot_tests_arguments/openeu_testing.txt -v  broker:PrivatMarket -v role:viewer -v api_version:2.4 || true
