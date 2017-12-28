@@ -13,7 +13,7 @@ addons:
     packages:
       - google-chrome-stable
 
-before_install:
+install:
   - sudo apt-get install python-minimal python2.7-dev git gcc libyaml-dev libjpeg-dev libz-dev
   - python bootstrap.py
   - bin/buildout -N
