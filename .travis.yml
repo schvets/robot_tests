@@ -4,6 +4,15 @@ virtualenv:
   
  python:
  - "2.7"
+ 
+ before_install:
+  - sudo apt-get install python-minimal python2.7-dev git gcc libyaml-dev libjpeg-dev libz-dev
+  - python bootstrap.py
+  - python bootstrap.py
+  - cd bin
+  - ls
+  - cd ...
+
   
 addons:
   apt:
@@ -14,9 +23,6 @@ addons:
 
 script:
   # perform build and run commands here
-  - sudo apt-get install python-minimal python2.7-dev git gcc libyaml-dev libjpeg-dev libz-dev
-  - python bootstrap.py
-  - pip uninstall setuptools 38.2.4 -y
   - bin/buildout -N  
   - bin/buildout -N
   - bin/buildout -N
