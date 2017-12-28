@@ -24,7 +24,6 @@ script:
   - python bootstrap.py
   - ls
   - cd eggs
-  - rm -rf zc.buildout-2.10.0-py2.7.egg
   - ls
   - cd ..
   - bin/buildout -N
