@@ -10,7 +10,7 @@ addons:
       - google-chrome-stable
 
 addons:
-   firefox: "57.1" # if your project contains tests need to be run on firefox include these lines
+   firefox: "57.0.2" # if your project contains tests need to be run on firefox include these lines
 
 
 before_install:
