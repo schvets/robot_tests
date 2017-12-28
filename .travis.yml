@@ -1,4 +1,6 @@
 language: python # set desired language
+virtualenv:
+  system_site_packages: true
 
 dist: trusty
 
@@ -24,7 +26,7 @@ script:
   - yes
   - bin/buildout -N  
   - bin/buildout -N
-  - bin/buildout -N 
+  - bin/buildout -N
   - bin/op_tests -s 1_openProcedure -As_arguments/openeu_testing.txt -v  broker:PrivatMarket -v role:viewer -v api_version:2.4 || true robot_test
   - ls
   - cd bin
