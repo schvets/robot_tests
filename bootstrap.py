@@ -148,7 +148,7 @@ if find_links:
     cmd.extend(['-f', find_links])
 
 requirement = 'zc.buildout'
-version = 2.5.3
+version = '2.5.3'
 # if version is None and not options.accept_buildout_test_releases:
 #     # Figure out the most recent final version of zc.buildout.
 #     import setuptools.package_index
