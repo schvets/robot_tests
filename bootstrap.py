@@ -185,7 +185,7 @@ version = '2.5.3'
 #             version = best[-1].version
 # if version:
 #     requirement = '=='.join((requirement, version))
-# cmd.append(requirement)
+cmd.append(requirement)
 
 import subprocess
 if subprocess.call(cmd) != 0:
