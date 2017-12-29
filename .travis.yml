@@ -13,7 +13,15 @@ install:
 script:
   # perform build and run commands here
   - python bootstrap.py
+  - cd /home/travis/build/schvets/robot_tests/eggs
+  - ls
+  - sudo rm -rf zc.buildout-2.10.0-py2.7.egg
+  - ls
+  - cd ..
   - python bootstrap.py
+  - cd /home/travis/build/schvets/robot_tests/develop-eggs
+  - ls
+  - cd ..
   - bin/buildout -N
   - bin/buildout -N
   - bin/op_tests -s 1_openProcedure -As_arguments/openeu_testing.txt -v  broker:PrivatMarket -v role:viewer -v api_version:2.4 || true  - ls
