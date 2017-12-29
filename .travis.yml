@@ -23,5 +23,11 @@ script:
   - ls
   - cd ..
   - bin/buildout -N
+  - cd /home/travis/build/schvets/robot_tests/eggs/
+  - sudo rm -rf zc.buildout-2.10.0-py2.7.egg
+  - cd ..
   - bin/buildout -N
+  - cd /home/travis/build/schvets/robot_tests/eggs/
+  - sudo rm -rf zc.buildout-2.10.0-py2.7.egg
+  - cd ..
   - bin/op_tests -s 1_openProcedure -As_arguments/openeu_testing.txt -v  broker:PrivatMarket -v role:viewer -v api_version:2.4 || true  - ls
